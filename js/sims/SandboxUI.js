@@ -342,7 +342,8 @@ function SandboxUI(config){
 	sliders.push(slider_turns);
 	slider_turns.slideshow = self.slideshow;
 	listen(self, "rules/turns",function(value){
-		var words = (value==1) ? Words.get("sandbox_rules_1_single") : Words.get("sandbox_rules_1"); // plural?
+		var words = (value==1) ? Words.get("sandbox_rules_1_single") : 
+		(value<5)?Words.get("sandbox_rules_1_dual"):Words.get("sandbox_rules_1"); // plural?
 		words = words.replace(/\[N\]/g, value+""); // replace [N] with the number value
 		rule_turns.innerHTML = words;
 	});
@@ -359,7 +360,8 @@ function SandboxUI(config){
 	sliders.push(slider_evolution);
 	slider_evolution.slideshow = self.slideshow;
 	listen(self, "rules/evolution",function(value){
-		var words = (value==1) ? Words.get("sandbox_rules_2_single") : Words.get("sandbox_rules_2"); // plural?
+		var words = (value==1) ? Words.get("sandbox_rules_2_single") : 
+		(value<5) ? Words.get("sandbox_rules_2_dual") : Words.get("sandbox_rules_2"); // plural?
 		words = words.replace(/\[N\]/g, value+""); // replace [N] with the number value
 		rule_evolution.innerHTML = words;
 	});
